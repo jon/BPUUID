@@ -100,4 +100,16 @@
 	return [self stringRepresentation];
 }
 
+#pragma mark -
+#pragma mark NSCoding implementation
+
+- (id)initWithCoder:(NSCoder *)decoder {
+	NSString *uuidString = [decoder decodeObjectForKey:@"UUID"];
+	return [self initWithString:uuidString];
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+	[encoder encodeObject:[self stringRepresentation] forKey:@"UUID"];
+}
+
 @end
